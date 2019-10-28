@@ -1,0 +1,95 @@
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <!-- Logo -->
+                <div class="logo">
+                    <h1><a href="#index">Bootstrap Admin Theme</a></h1>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="input-group form">
+                            <input type="text" class="form-control" placeholder="Search...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button">Search</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="navbar navbar-inverse" role="banner">
+                    <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+                        <ul class="nav navbar-nav" id="user-cont">
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myProfile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- page-content -->
+<div class="page-content">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="sidebar content-box" style="display: block;">
+                <ul class="nav">
+                    <!-- Main menu -->
+                    <li class="current" data-url="home"><a href="#/home"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+                    <li data-url="calendar"><a href="#/calendar"><i class="glyphicon glyphicon-calendar"></i> Calendar</a></li>
+                    <li data-url="stats"><a href="#/stats"><i class="glyphicon glyphicon-stats"></i> Statistics (Charts)</a></li>
+                    <li data-url="tables"><a href="#/tables"><i class="glyphicon glyphicon-list"></i> Tables</a></li>
+                    <li data-url="buttons"><a href="#/buttons"><i class="glyphicon glyphicon-record"></i> Buttons</a></li>
+                    <li data-url="editors"><a href="#/editors"><i class="glyphicon glyphicon-pencil"></i> Editors</a></li>
+                    <li data-url="forms"><a href="#/forms"><i class="glyphicon glyphicon-tasks"></i> Forms</a></li>
+                    <li class="submenu">
+                        <a href="#">
+                            <i class="glyphicon glyphicon-list"></i> Pages
+                            <span class="caret pull-right"></span>
+                        </a>
+                        <!-- Sub menu -->
+                        <ul>
+                            <li><a href="#login">Login</a></li>
+                            <li><a href="#signup">Signup</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-10" id="container">
+
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+
+        <div class="copy text-center">
+            Copyright 2014 <a href='#'>Website</a>
+        </div>
+
+    </div>
+</footer>
