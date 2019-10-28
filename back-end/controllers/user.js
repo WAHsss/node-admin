@@ -59,7 +59,7 @@ const signin = async (req, res, next) => {
             req.session.username = username;
             //登录成功后设置token
             let token = await tools.generatorToken(username);
-            res.set('X-Access-Token', token);
+            res.set('X-Access-Token', token);   
             res.render('success', {
                 data: JSON.stringify({
                     message: '用户登录成功'

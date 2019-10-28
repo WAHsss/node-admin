@@ -20,8 +20,10 @@ class User{
         })
     }
     async getIsSign(){
-        let result = await httpMode.post({url: '/api/users/isSignin'});
+        let result = await httpMode.get({url: '/api/users/isSignin'});
         let username = result.data.username;
+        console.log(username);
+        
         this.isSignin = username ? true : false;
         this.username = username;
     }
