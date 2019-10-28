@@ -1,6 +1,8 @@
-const auth = (req, res, next) => {
+const tools = require('../util/tools');
+const auth = async (req, res, next) => {
     res.set('Content-Type', 'application/json; charset=utf-8');
-    if (req.session.username) {
+    let token = req.get('X-Access-Token');
+    if (token) {
         if (req.path === '/isSignin') {
             res.render('success', {
                 data: JSON.stringify({
@@ -8,7 +10,8 @@ const auth = (req, res, next) => {
                 })
             })
         } else {
-            if (req.session.username) {
+            let decode = await tools.varifyToken(token);
+            if (decode) {
                 next();
             } else {
                 res.render('fail', {

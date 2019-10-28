@@ -2,6 +2,7 @@ const userModel = require('../models/user');
 const tools = require('../util/tools');
 
 
+
 const hasSame = async function (req, res, next) {
     let { username, password, confirmPwd } = req.body;
     if (password === confirmPwd) {
@@ -56,6 +57,9 @@ const signin = async (req, res, next) => {
         let compareResult = await tools.compare(password, hash);
         if (compareResult) {
             req.session.username = username;
+            //登录成功后设置token
+            let token = await tools.generatorToken(username);
+            res.set('X-Access-Token', token);
             res.render('success', {
                 data: JSON.stringify({
                     message: '用户登录成功'
@@ -80,6 +84,7 @@ const signin = async (req, res, next) => {
 const signOut = (req, res, next) => {
     res.set('Content-Type', 'applicaiton/json;sharset=utf-8');
     req.session = null;
+    res.set('X-Access-Token', '');
     res.render('success', {
         data: JSON.stringify({
             message: '注销成功.'
