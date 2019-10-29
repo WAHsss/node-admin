@@ -1,0 +1,43 @@
+<div class="col-lg-10">
+    <div class="content-box-large">
+        <div class="panel-heading">
+            <div class="panel-title">NEW ITEM</div>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal" role="form" id="from-wrap">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Position Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="positionName" placeholder="Position Name..." value="前端">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Company Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="companyName"  placeholder="Company Name..." value="alibaba">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">City</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="city" placeholder="City..." value="杭州">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Salary(￥)</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" name="salary"  placeholder="Salary..." value="20000">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-1">
+                        <a href="#/tables" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-left"></i> back</a>
+                    </div>
+                    <div class="col-sm-offset-6 col-sm-1">
+                        <div id="new-item" class="btn btn-primary btn-block">submit</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
