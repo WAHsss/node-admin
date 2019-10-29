@@ -1,6 +1,6 @@
 import store from 'store';
 export default {
-    post({ url , data={} , type }){
+    post({ url , data={} , type= 'POST'}){
         return $.ajax({
             url,
             data,

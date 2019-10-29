@@ -7,6 +7,7 @@ var cookieSession = require('cookie-session')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var calendarRouter = require('./routes/calendar');
 var positionRouter = require('./routes/position');
 var {auth} = require('./middlewares/auth');
 
@@ -36,7 +37,7 @@ app.use(cookieSession({
 app.use('/api' , indexRouter);
 app.use('/api/users' , usersRouter);
 app.use('/api/position' , auth , positionRouter);
-
+app.use('/api/calendar',auth,calendarRouter)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

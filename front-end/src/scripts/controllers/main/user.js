@@ -1,5 +1,6 @@
 import userView from '../../views/main/user.art';
 import httpMode from '../../models/http';
+import store from 'store';
 class User{
     constructor(){
         this.isSignin = false;
@@ -13,8 +14,9 @@ class User{
             username : this.username
         }))
         $('#singout').on('click',async ()=>{
-            let result = await httpMode.post({url: '/api/users/signout'});
+            let result = await httpMode.get({url: '/api/users/signout'});
             if(result.ret){
+                store.remove('token');
                 location.href = 'sign.html'
             }
         })
@@ -22,7 +24,6 @@ class User{
     async getIsSign(){
         let result = await httpMode.get({url: '/api/users/isSignin'});
         let username = result.data.username;
-        console.log(username);
         
         this.isSignin = username ? true : false;
         this.username = username;

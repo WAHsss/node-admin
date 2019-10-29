@@ -2,7 +2,11 @@
     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">{{isSignin ? username : "Unlogin"}}<b
             class="caret"></b></a>
     <ul class="dropdown-menu animated fadeInUp">
-        <li><a href="javascript:void(0);" data-toggle="modal" data-target="#myProfile">Profile</a></li>
-        <li><a href="javascript:;" id="singout">Logout</a></li>
+        {{if isSignin}}
+            <li><a href="javascript:void(0);" data-toggle="modal" data-target="#myProfile">Profile</a></li>
+            <li><a href="javascript:;" id="singout">Logout</a></li>
+        {{else}}
+            <li><a href="sign.html" id="singout">Sign</a></li>
+        {{/if}}
     </ul>
 </li>
