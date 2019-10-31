@@ -34,5 +34,17 @@ export default {
                 return result;
             }
         })
+    },
+    update({url = '/api/position',data = {},type = 'post'}){
+        let token = store.get('token');
+        return $.ajax({
+            url,
+            data,
+            type,
+            dataType : 'json',
+            headers : {
+                'X-Access-Token' : token
+            }
+        })
     }
 }

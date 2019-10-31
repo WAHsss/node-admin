@@ -11,8 +11,9 @@ router.use((req)=>{
 
 router.route('/home', home.artical);
 router.route('/calendar',calendar.table);
-router.route('/tables',tables.list)
-router.route('/tables_add',tables.add)
+router.route('/tables',tables.list);
+router.route('/tables_add',tables.add);
+router.route('/tables_modify',tables.modify);
 
 router.route('*',(req,res)=>{
     res.redirect('/home')

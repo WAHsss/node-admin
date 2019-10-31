@@ -18,8 +18,8 @@ const remove = async (id)=>{
 }
 const search = async (keywords) => {
     let reg = new RegExp(keywords, 'gi')
-    return await Positions.find({}).or([{ companyName: reg }, { positionName: reg }])
-  }
+    return await Positions.find({}).or([{ companyName: reg }, { positionName: reg }, { city: reg }])
+}
 module.exports = { 
     save,
     findAll,
