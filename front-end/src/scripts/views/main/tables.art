@@ -13,9 +13,9 @@
                 </div>
                 <div class="navbar-header navbar-right">
                     <ul class="nav navbar-nav">
-                        <li data-rel="collapse"><a href="#"><i class="glyphicon glyphicon-refresh"></i></a></li>
+                        <li data-rel="collapse"><a href="javascript:void(0);"><i class="glyphicon glyphicon-refresh"></i></a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                 aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-cog "></i>
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="config">
@@ -63,13 +63,20 @@
                             <button data-id={{$value._id}} class="btn btn-primary btn-update"><span
                                     class="glyphicon glyphicon-edit"></span>
                                 修改</button>
-                            <button data-id={{$value._id}} class="btn btn-danger btn-delete"><span
+                            <button data-id={{$value._id}} data-img={{$value.companyLogo}} class="btn btn-danger btn-delete"><span
                                     class="glyphicon glyphicon-remove"></span>删除</button>
                         </td>
                     </tr>
                     {{/each}}
                 </tbody>
             </table>
+            <ul class="pagination" style="float: right;">
+                <li><a href="javascript:;" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                <% for(let i = 1 ; i <= pageNum ;i++  ){%>
+                    <li data-pid='<%= i %>'><a href="javascript:;"><%= i %></a></li>
+                <%}%>
+                <li><a href="javascript:;" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+            </ul>
         </div>
     </div>
 </div>

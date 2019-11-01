@@ -1,19 +1,31 @@
 const positionModel = require('../models/positions');
 const moment = require('moment');
+const fs = require('fs');
+const path = require('path');
 const list = async (req, res, next) => {
     res.set('Content-Type', 'application/json;charset=utf-8');
-    let result = await positionModel.findAll();
-    res.render('success', {
-        data : JSON.stringify(result)
-    })
+    let data = req.query;
+    let result = await positionModel.findAll(data);
+    if (result) {
+        res.render('success', {
+            data: JSON.stringify(result)
+        })
+    }else{
+        res.render('fail', {
+            data: JSON.stringify({
+                message: '列表查询失败'
+            })
+        })
+    }
+
 }
 const save = async (req, res, next) => {
     res.set('Content-Type', 'application/json;charset=utf-8');
     let data = req.body;
     data.createTime = moment().format('YY-MM-DD HH:mm:ss');
-    console.log(data,req.filename);
+
     let result = await positionModel.save({
-        companyLogo : req.filename,
+        companyLogo: req.filename,
         ...data
     });
     if (result) {
@@ -30,8 +42,16 @@ const save = async (req, res, next) => {
         })
     }
 }
-const remove = async (req,res,next)=>{
-    res.set('Content-type','application/json;charset=utf-8');
+const remove = async (req, res, next) => {
+    res.set('Content-type', 'application/json;charset=utf-8');
+    fs.unlink(path.resolve(__dirname, `../public/uploads/${req.body.companyLogo}`), (err) => {
+        if (err) {
+            console.log(err.message);
+        } else {
+            console.log('文件已删除');
+        }
+
+    })
     let result = await positionModel.remove(req.body.id)
     if (result) {
         res.render('success', {
@@ -47,52 +67,66 @@ const remove = async (req,res,next)=>{
         })
     }
 }
-const update = async (req,res,next)=>{
-    res.set('Content-Type','application/json;charset=utf-8');
-    if(!req.filename){
-        delete req.filename
+const update = async (req, res, next) => {
+    res.set('Content-Type', 'application/json;charset=utf-8');
+    let data = {};
+    let { filename, body } = req;
+    if (filename) {
+        fs.unlink(path.resolve(__dirname, `../public/uploads/${body.originLogo}`), (err) => {
+            if (err) {
+                console.log(err.message);
+            } else {
+                console.log('文件已删除');
+            }
+
+
+        });
+        delete body.originLogo;
+        data = { companyLogo: filename, ...body };
+    } else {
+        data = body;
     }
-    let result = await positionModel.update(req.body);
-    if(result){
-        res.render('success',{
-            data : JSON.stringify({
-                message : '修改成功'
+    let result = await positionModel.update(data);
+    if (result) {
+        res.render('success', {
+            data: JSON.stringify({
+                message: '修改成功'
             })
         })
-    }else{
-        res.render('fail',{
-            data : JSON.stringify({
+    } else {
+        res.render('fail', {
+            data: JSON.stringify({
                 message: '数据修改失败'
             })
         })
     }
 }
-const findOne = async (req,res,next)=>{
-    res.set('Content-Type','application/json;charset=utf-8');
+const findOne = async (req, res, next) => {
+    res.set('Content-Type', 'application/json;charset=utf-8');
     let result = await positionModel.findOne(req.query.id);
-    if(result){
-        res.render('success',{
-            data : JSON.stringify(result)
+    if (result) {
+        res.render('success', {
+            data: JSON.stringify(result)
         })
-    }else{
-        res.render('fail',{
-            data : JSON.stringify({
-                message : '查无此项数据'
+    } else {
+        res.render('fail', {
+            data: JSON.stringify({
+                message: '查无此项数据'
             })
         })
     }
 }
-const search = async (req,res,next)=>{
-    res.set('Content-Type','application/json;charset=utf-8');
-    let result = await positionModel.search(req.query.keywords);
-    if(result){
-        res.render('success',{
-            data : JSON.stringify(result)
+const search = async (req, res, next) => {
+    res.set('Content-Type', 'application/json;charset=utf-8');
+    let result = await positionModel.search(req.query);
+    if (result) {
+        res.render('success', {
+            data: JSON.stringify(result)
         })
-    }else{
-        res.render('fail',{
-            data : JSON.stringify({
-                message : '查无此项数据'
+    } else {
+        res.render('fail', {
+            data: JSON.stringify({
+                message: '查无此项数据'
             })
         })
     }

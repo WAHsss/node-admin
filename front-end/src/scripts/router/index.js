@@ -5,7 +5,7 @@ import * as tables from '../controllers/main/tables';
 const router = new SMERouter('container');
 
 router.use((req)=>{
-    let hash = req.url.slice(1).split('_')[0];
+    let hash = req.url.slice(1).split('/')[0].split('?')[0].split('_')[0];
     $(`.page-content li[data-url=${hash}]`).addClass('current').siblings().removeClass('current');
 })
 
@@ -14,6 +14,9 @@ router.route('/calendar',calendar.table);
 router.route('/tables',tables.list);
 router.route('/tables_add',tables.add);
 router.route('/tables_modify',tables.modify);
+router.route('/tables_list/:pid',tables.list)
+
+
 
 router.route('*',(req,res)=>{
     res.redirect('/home')

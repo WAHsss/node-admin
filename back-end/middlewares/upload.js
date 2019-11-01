@@ -19,12 +19,12 @@ const storage = multer.diskStorage({
         cb(null, filename)
     }
 })
-const upload = multer({ storage: storage }).single('companyLogo')
+const upload = multer({ storage: storage }).single('companyLogo');``
 
 module.exports = (req , res , next)=>{
-    console.log(5)
     upload(req, res, function (err){
         req.filename = filename;
+        filename = '';
         next()
     })
 }

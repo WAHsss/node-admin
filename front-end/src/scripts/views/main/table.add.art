@@ -10,6 +10,7 @@
                     <label class="col-sm-2 control-label">Company Logo</label>
                     <div class="col-sm-offset-3 col-sm-4">
                         <img style="width: 140px; height: 140px;" src="http://localhost:3000/uploads/{{item?item.companyLogo:'down.JPG'}}" alt="logo" class="img-circle">
+                        <input type="hidden" name="originLogo" value={{item.companyLogo}}>
                     </div>
                 </div>
                 {{/if}}
